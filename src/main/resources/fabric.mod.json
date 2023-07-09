@@ -3,7 +3,7 @@
   "id": "petphrase",
   "version": "${version}",
   "name": "PetPhrase",
-  "description": "",
+  "description": "nanoda~",
   "authors": [
     "Tapio"
   ],
@@ -19,8 +19,16 @@
     "petphrase.mixins.json"
   ],
   "depends": {
-    "fabricloader": "*",
-    "minecraft": "1.19",
-    "cloth-config": "*"
-  }
+    "fabricloader": ">=0.14.21",
+    "minecraft": "1.20.1",
+    "cloth-config": ">=11.0.99"
+  },
+  "custom": {
+    "modmenu": {
+        "links": {
+            "modmenu.discord": "https://github.com/Nova-Committee/PetPhrase-Client"
+        },
+        "update_checker": false
+    }
+}
 }
