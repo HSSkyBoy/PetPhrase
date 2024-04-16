@@ -47,14 +47,8 @@ jobs:
         run: sed -i "s/undefined/$GITHUB_RUN_NUMBER/g" gradle.properties
       - name: build
         run: ./gradlew build
-      - name: Find correct JAR
-        id: find-jar
-        run: |
-          output="$(find build/libs/ ! -name "*-dev.jar" ! -name "*-sources.jar" -type f -printf "%f\n")"
-          echo "jarname=$output" >> $GITHUB_OUTPUT
       - name: capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '17' }}
-        uses: actions/upload-artifact@v3.1.1
+        uses: actions/upload-artifact@v3
         with:
-          name: ${{ steps.find-jar.outputs.jarname }}
-          path: build/libs/${{ steps.find-jar.outputs.jarname }}
+          name: Artifacts
+          path: build/libs/
