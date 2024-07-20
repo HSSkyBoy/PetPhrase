@@ -18,10 +18,14 @@
   "entrypoints": {
     "client": [
       "committee.nova.petphrase.client.PetphraseClient"
-    ],
+    ]
   },
   "mixins": [
-    "petphrase.mixins.json"
+    "petphrase.mixins.json",
+    {
+      "config": "petphrase.client.mixins.json",
+      "environment": "client"
+    }
   ],
   "depends": {
     "fabricloader": ">=0.15.11",
