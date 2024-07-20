@@ -9,19 +9,25 @@
     "Polaris_Light",
     "HSSkyBoy"
   ],
-  "contact": {},
+  "contact": {
+    "sources": "https://github.com/HSSkyBoy/PetPhrase"
+  },
   "license": "AGPL-3.0",
   "environment": "client",
   "entrypoints": {
     "client": [
       "committee.nova.petphrase.client.PetphraseClient"
-    ]
+    ],
   },
   "mixins": [
-    "petphrase.mixins.json"
+    "petphrase.mixins.json",
+    {
+      "config": "petphrase.client.mixins.json",
+      "environment": "client"
+    },
   ],
   "depends": {
-    "fabricloader": ">=0.15.10",
+    "fabricloader": ">=0.15.11",
     "minecraft": ">=1.21",
     "java":">=21",
     "cloth-config": ">=14.0.0"
@@ -29,9 +35,9 @@
   "custom": {
     "modmenu": {
         "links": {
-            "modmenu.discord": "https://github.com/HSSkyBoy/PetPhrase-Client"
+            "modmenu.discord": "https://github.com/HSSkyBoy/PetPhrase"
         },
         "update_checker": false
     }
-}
+ }
 }
