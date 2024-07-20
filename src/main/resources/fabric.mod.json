@@ -3,10 +3,11 @@
   "id": "petphrase",
   "version": "${version}",
   "name": "PetPhrase",
-  "description": "nanoda~",
+  "description": "nya~",
   "authors": [
     "Tapio",
-    "Polaris_Light"
+    "Polaris_Light",
+    "HSSkyBoy"
   ],
   "contact": {},
   "license": "AGPL-3.0",
@@ -20,14 +21,15 @@
     "petphrase.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.15.0",
+    "fabricloader": ">=0.15.10",
     "minecraft": ">=1.21",
+    "java":">=21",
     "cloth-config": ">=14.0.0"
   },
   "custom": {
     "modmenu": {
         "links": {
-            "modmenu.discord": "https://github.com/Nova-Committee/PetPhrase-Client"
+            "modmenu.discord": "https://github.com/HSSkyBoy/PetPhrase-Client"
         },
         "update_checker": false
     }
