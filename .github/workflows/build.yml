@@ -1,5 +1,5 @@
-name: build
-on: [pull_request, push]
+name:Gradle Build
+on: [push]
 
 jobs:
   build:
