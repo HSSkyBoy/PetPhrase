@@ -11,12 +11,17 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v4
+
+      - name: Check for errors
+        uses: github/super-linter@v3
+        env:
+          VALIDATE_ALL_CODEBASE: false
 
       - name: validate gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: setup java ${{ matrix.java }}
+      - name: Setup Java
         uses: actions/setup-java@v3.6.0
         with:
           distribution: 'zulu'
@@ -37,7 +42,7 @@ jobs:
       - name: Set build number
         run: sed -i "s/undefined/$GITHUB_RUN_NUMBER/g" gradle.properties
 
-      - name: build
+      - name: Build with Gradle
         run: ./gradlew build
 
       - name: Find correct JAR
