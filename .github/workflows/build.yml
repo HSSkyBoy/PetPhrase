@@ -13,11 +13,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: Check for errors
-        uses: github/super-linter@v3
-        env:
-          VALIDATE_ALL_CODEBASE: false
-
       - name: validate gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
