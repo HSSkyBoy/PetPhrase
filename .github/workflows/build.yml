@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-java@v3.6.0
         with:
           distribution: 'dragonwell'
-          java-version: '21
+          java-version: '21'
 
       - name: Setup cache
         uses: actions/cache@v3.0.11
