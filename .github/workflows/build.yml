@@ -1,5 +1,4 @@
 name: Mod Build
-
 on: [push, workflow_dispatch]
 
 jobs:
