@@ -1,26 +1,23 @@
-name: Gradle Build
-on: [push,workflow_dispatch]
+name: Mod Build
+
+on: [push, workflow_dispatch]
 
 jobs:
   build:
-    strategy:
-      matrix:
-        java: [ 21 ]
-        os: [ ubuntu-latest ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
-      - name: checkout
+      - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: validate gradle wrapper
+      - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
 
       - name: Setup Java
         uses: actions/setup-java@v3.6.0
         with:
-          distribution: 'zulu'
-          java-version: ${{ matrix.java }}
+          distribution: 'dragonwell'
+          java-version: '21
 
       - name: Setup cache
         uses: actions/cache@v3.0.11
@@ -40,10 +37,10 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Find correct JAR
+      - name: Find Correct JAR
         id: find-jar
         run: |
-          output="$(find build/libs/ ! -name "*-dev.jar" ! -name "*-sources.jar" -type f -printf "%f\n")"
+          output="$(find build/libs/ -type f ! -name "*-dev.jar" ! -name "*-sources.jar" -printf "%f\n")"
           echo "jarname=$output" >> $GITHUB_OUTPUT
 
       - name: capture build artifacts
