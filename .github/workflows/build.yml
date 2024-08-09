@@ -15,7 +15,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v3.6.0
         with:
-          distribution: 'dragonwell'
+          distribution: 'AdoptOpenJDK Hotspot'
           java-version: '21'
 
       - name: Setup cache
