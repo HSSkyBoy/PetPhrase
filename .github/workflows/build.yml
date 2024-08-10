@@ -50,12 +50,4 @@ jobs:
           path: build/libs/
           retention-days: 64
           compression-level: 6 #same as GNU Gzip
- merge:
-   runs-on: ubuntu-latest
-   needs: upload
-   steps:
-     - name: Merge Artifacts
-       uses: actions/upload-artifact/merge@v4.1.0
-       with:
-         name: all-my-files
-         pattern: my-artifact-*
+
