@@ -1,7 +1,7 @@
-package committee.nova.petphrase.mixin;
+package committee.nova.petphrasex.mixin;
 
-import committee.nova.petphrase.client.PetphraseClient;
-import committee.nova.petphrase.util.StringUtil;
+import committee.nova.petphrasex.client.PetphraseClient;
+import committee.nova.petphrasex.util.StringUtil;
 import net.minecraft.client.gui.screen.ChatScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

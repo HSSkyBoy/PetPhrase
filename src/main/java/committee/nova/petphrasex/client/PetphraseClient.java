@@ -1,6 +1,6 @@
-package committee.nova.petphrase.client;
+package committee.nova.petphrasex.client;
 
-import committee.nova.petphrase.config.Configuration;
+import committee.nova.petphrasex.config.Configuration;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;

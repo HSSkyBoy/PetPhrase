@@ -1,4 +1,4 @@
-package committee.nova.petphrase.util;
+package committee.nova.petphrasex.util;
 
 import org.apache.commons.lang3.StringUtils;
 
