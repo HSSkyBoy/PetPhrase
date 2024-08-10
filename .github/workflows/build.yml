@@ -44,7 +44,7 @@ jobs:
 
       - name: capture build artifacts
         if: ${{ matrix.java == '21' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: ${{ steps.find-jar.outputs.jarname }}
           path: build/libs/${{ steps.find-jar.outputs.jarname }}
