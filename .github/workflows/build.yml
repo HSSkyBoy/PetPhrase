@@ -1,22 +1,26 @@
 name: Mod Build
-on: [push, workflow_dispatch]
+on: [push,workflow_dispatch]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ 21 ]
+        os: [ ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Checkout source code
+      - name: checkout
         uses: actions/checkout@v4
 
-      - name: Validate Gradle Wrapper
+      - name: validate gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
       - name: Setup Java
         uses: actions/setup-java@v3.6.0
         with:
-          distribution: 'adopt'
-          java-version: '21'
+          distribution: 'zulu'
+          java-version: ${{ matrix.java }}
 
       - name: Setup cache
         uses: actions/cache@v3.0.11
@@ -34,7 +38,7 @@ jobs:
         run: sed -i "s/undefined/$GITHUB_RUN_NUMBER/g" gradle.properties
 
       - name: Build with Gradle
-        run: ./gradlew build --info
+        run: ./gradlew build
 
       - name: Find correct JAR
         id: find-jar
@@ -42,12 +46,9 @@ jobs:
           output="$(find build/libs/ ! -name "*-dev.jar" ! -name "*-sources.jar" -type f -printf "%f\n")"
           echo "jarname=$output" >> $GITHUB_OUTPUT
 
-      - name: Upload build artifacts
-        if: ${{ matrix.java == '21' }}
-        uses: actions/upload-artifact@v4.1.0
+      - name: capture build artifacts
+        if: ${{ runner.os == 'Linux' && matrix.java == '21' }}
+        uses: actions/upload-artifact@v3.1.1
         with:
-          name: Artifact
-          path: build/libs/
-          retention-days: 64
-          compression-level: 6 #same as GNU Gzip
-
+          name: ${{ steps.find-jar.outputs.jarname }}
+          path: build/libs/${{ steps.find-jar.outputs.jarname }}
