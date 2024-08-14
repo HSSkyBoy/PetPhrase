@@ -16,11 +16,14 @@ jobs:
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: Setup Java
-        uses: actions/setup-java@v3.6.0
+ - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: ${{ matrix.java }}
+
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x ./gradlew
 
       - name: Setup Cache
         uses: actions/cache@v3
@@ -31,7 +34,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ github.run_id }}
 
       - name: Build with Gradle
-        run: ./gradlew build --info
+        run: ./gradlew build
 
       - name: Find correct JAR
         id: find-jar
