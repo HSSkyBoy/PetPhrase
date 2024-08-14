@@ -34,12 +34,12 @@ jobs:
         run: sed -i "s/undefined/$GITHUB_RUN_NUMBER/g" gradle.properties
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --info
 
-      - name: Find Correct JAR
+      - name: Find correct JAR
         id: find-jar
         run: |
-          output="$(find build/libs/ -type f ! -name "*-dev.jar" ! -name "*-sources.jar" -printf "%f\n")"
+          output="$(find build/libs/ ! -name "*-dev.jar" ! -name "*-sources.jar" -type f -printf "%f\n")"
           echo "jarname=$output" >> $GITHUB_OUTPUT
 
       - name: Upload build artifacts
