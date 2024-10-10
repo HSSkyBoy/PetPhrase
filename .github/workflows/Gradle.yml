@@ -33,6 +33,7 @@ jobs:
 
     - name: 使用Gradle构建项目
       run: ./gradlew build -PuseCommitHashInVersion
+
     - name: 上传构建产物
       uses: actions/upload-artifact@v3.1.2
       with:

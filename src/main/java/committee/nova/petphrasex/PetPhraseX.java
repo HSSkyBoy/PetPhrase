@@ -14,7 +14,7 @@ import java.util.List;
 
 @Mod(petphrasex.MODID)
 public class petphrasex {
-    public static final String MODID = "petphrasexclient";
+    public static final String MODID = "petphrasex";
     public static final ForgeConfigSpec CLIENT_CONFIG;
     public static final ForgeConfigSpec.ConfigValue<String> petphrasex;
     public static final ForgeConfigSpec.ConfigValue<List<String>> filteredPrefix;
@@ -24,7 +24,7 @@ public class petphrasex {
         defaultList.add("/");
         defaultList.add("xaero-waypoint");
         final var builder = new ForgeConfigSpec.Builder();
-        builder.comment("petphrasex Configuration");
+        builder.comment("petPhraseX Configuration");
         petphrasex = builder.comment("The pet phrase apply to your messages")
                 .define("petphrasex", " nya");
         filteredPrefix = builder.comment("If the words in the list contain the message to be sent, petphrasex won't activate on the message.")
