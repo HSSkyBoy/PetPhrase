@@ -1,6 +1,6 @@
-package committee.nova.petphrasex.util;
+package committee.nova.petphrase.util;
 
-import committee.nova.petphrasex.petphrasex;
+import committee.nova.petphrase.PetPhrase;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -18,11 +18,11 @@ public class StringUtil {
         return (!punctuations.contains(string.charAt(index))) ? index : (index == 0) ? -1 : getPunc(string, index - 1);
     }
 
-    public static String fillpetphrasexIn(String original, String petphrasex) {
+    public static String fillPetPhraseIn(String original, String petPhrase) {
         if (original == "") return original;
-        for (final String f : petphrasex.filteredPrefix.get()) if (original.startsWith(f)) return original;
+        for (final String f : PetPhrase.filteredPrefix.get()) if (original.startsWith(f)) return original;
         final int index = getLastPunc(original) + 1;
         if (index == 0) return original;
-        return StringUtils.substring(original, 0, index) + petphrasex + StringUtils.substring(original, index);
+        return StringUtils.substring(original, 0, index) + petPhrase + StringUtils.substring(original, index);
     }
 }
