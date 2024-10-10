@@ -1,38 +1,42 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
+@ -1,41 +1,38 @@
+# 这个工作流将使用非GitHub认证的操作。
+# 部分内容将由第三方提供，并且受到单独的服务条款、隐私政策和支持文档的约束。
+# 这个工作流将构建一个Java项目，并使用Gradle缓存/恢复任何依赖项以提高工作流执行时间。
+# 更多信息请查看：https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
 
-name: Java CI with Gradle
+name: Build Forge with Gradle
 
 on:
   push:
-    branches: [ "Forge/1.18.2" ]
-  pull_request:
-    branches: [ "Forge/1.18.2" ]
+    branches: [ "Forge1.18.2" ]
+  workflow_dispatch: 
 
 permissions:
   contents: read
 
 jobs:
   build:
-
+  
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
+    - name: 检出代码
+      uses: actions/checkout@v3
+
+    - name: 设置JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Grant execute permission for gradlew
+
+    - name: 给予gradlew执行权限
       run: chmod +x gradlew
-    - name: Build with Gradle
+
+    - name: 使用Gradle构建项目
       run: ./gradlew build -PuseCommitHashInVersion
-    - uses: actions/upload-artifact@v3.1.2
+
+    - name: 上传构建产物
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: PetPharse-Forge-1.18.2
         path: build/libs
