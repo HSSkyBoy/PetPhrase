@@ -26,7 +26,7 @@ public class petphrasex {
         final var builder = new ForgeConfigSpec.Builder();
         builder.comment("petphrasex Configuration");
         petphrasex = builder.comment("The pet phrase apply to your messages")
-                .define("petphrasex", "nya");
+                .define("petphrasex", " nya");
         filteredPrefix = builder.comment("If the words in the list contain the message to be sent, petphrasex won't activate on the message.")
                 .define("filteredPrefix", defaultList);
         CLIENT_CONFIG = builder.build();
