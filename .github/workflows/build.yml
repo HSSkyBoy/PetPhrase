@@ -3,7 +3,7 @@
 # 这个工作流将构建一个Java项目，并使用Gradle缓存/恢复任何依赖项以提高工作流执行时间。
 # 更多信息请查看：https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
 
-name: Build with Gradle
+name: Build Forge with Gradle
 
 on:
   push:
