@@ -5,12 +5,10 @@
 
 name: Build with Gradle
 
-# 触发条件：当代码被推送或拉取请求时
 on:
   push:
-    branches: [ "Forge/1.18.2" ]
-  pull_request:
-    branches: [ "Forge/1.18.2" ]
+    branches: [ "Forge1.18.2" ]
+  workflow_dispatch: 
 
 permissions:
   contents: read
