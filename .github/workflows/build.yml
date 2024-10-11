@@ -17,16 +17,16 @@ jobs:
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: 设置AzuluOpenJDK 21
+      - name: 设置 AzuluOpenJDK 21
         uses: actions/setup-java@v3.6.0  # 检查是否有更新的版本
         with:
           distribution: 'zulu'
           java-version: ${{ matrix.java }}
 
-      - name: 基于 Gradle Wrapper 执行权限
+      - name: 给予 Gradle Wrapper 执行权限
         run: chmod +x ./gradlew
 
-      - name: 设置缓存
+      - name: 设置构建缓存
         uses: actions/cache@v3
         with:
           path: |
