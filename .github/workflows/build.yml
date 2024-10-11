@@ -35,8 +35,9 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
 
       - name: Gradle 构建
+        if: contains(github.event.head_commit.message, '[skip ci]') == false
         run: ./gradlew build --info
-        continue-on-error: false  # 根据需要决定是否添加此选项
+        continue-on-error: false
 
       - name: 查找正确的 JAR
         id: find-jar
