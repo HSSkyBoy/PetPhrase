@@ -26,7 +26,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '17'
-        distribution: 'temurin'
+        distribution: 'zulu'
 
     - name: 给予gradlew执行权限
       run: chmod +x gradlew
@@ -37,5 +37,5 @@ jobs:
     - name: 上传构建产物
       uses: actions/upload-artifact@v3.1.2
       with:
-        name: PetPharse-Forge-1.18.2
+        name: PetPharseX-Forge-1.18.2
         path: build/libs
