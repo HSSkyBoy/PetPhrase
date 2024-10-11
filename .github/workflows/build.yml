@@ -48,5 +48,5 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v3
         with:
-          name: build-Mod
+          name: PetPharseX-Fabric
           path: build/libs/
