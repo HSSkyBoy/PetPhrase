@@ -7,7 +7,7 @@ name: Build Forge with Gradle
 
 on:
   push:
-    branches: [ "Forge1.18.2" ]
+    branches: [ "Forge1.19.2" ]
   workflow_dispatch: 
 
 permissions:
@@ -37,5 +37,7 @@ jobs:
     - name: 上传构建产物
       uses: actions/upload-artifact@v3.1.2
       with:
-        name: PetPharseX-Forge-1.18.2
+        name: PetPharseX-Forge-1.19.2
         path: build/libs
+        if-no-files-found: error
+        compression-level: 8

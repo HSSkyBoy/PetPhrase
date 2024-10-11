@@ -14,7 +14,7 @@ apply plugin: 'maven-publish'
 
 version = "${version}"
 group = 'committee.nova.petphrase'
-archivesBaseName = 'PetPhrase-Client-Forge-1.18.2'
+archivesBaseName = 'PetPhrase-Client-Forge-1.19.2'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -25,7 +25,7 @@ tasks.withType(JavaCompile) {
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
 
-    mappings channel: 'official', version: '1.18.2'
+    mappings channel: 'official', version: '1.19.2'
     runs {
         client {
             workingDirectory project.file('run')
@@ -76,7 +76,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.4.0'
 
 
 }

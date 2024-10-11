@@ -7,9 +7,9 @@ name: Scala CI
 
 on:
   push:
-    branches: [ "Forge/1.18.2" ]
+    branches: [ "Forge1.19.2" ]
   pull_request:
-    branches: [ "Forge/1.18.2" ]
+    branches: [ "Forge1.19.2" ]
 
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '17'
-        distribution: 'temurin'
+        distribution: 'zulu'
         cache: 'sbt'
     - name: Run tests
       run: sbt test
