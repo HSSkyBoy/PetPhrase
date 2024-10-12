@@ -1,4 +1,4 @@
-name: Mod Build
+name: Build Mod
 
 on: [push, workflow_dispatch]
 
