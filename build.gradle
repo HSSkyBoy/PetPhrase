@@ -21,7 +21,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     
     // Cloth Config
-    modApi("me.shedaniel.cloth:cloth-config-fabric:15.0.130") {
+    modApi("me.shedaniel.cloth:cloth-config-fabric:15.0.140") {
         exclude group: "net.fabricmc.fabric-api", module: "fabric-api"
     }
     
