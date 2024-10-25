@@ -14,7 +14,7 @@ jobs:
       - name: 检查代码
         uses: actions/checkout@v4
 
-      - name: 检查是否跳过CI
+      - name: 检查是否跳过运行
         if: contains(github.event.head_commit.message, '[skip ci]') || contains(github.event.head_commit.message, '[ci skip]')
         run: |
           echo "CI流程被跳过"
@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-java@v3.6.0
         with:
           distribution: 'zulu'
-          java-version: ${{ matrix.java }}
+          java-version: 21
 
       - name: 给予 Gradle Wrapper 执行权限
         run: chmod +x ./gradlew
@@ -40,18 +40,18 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
 
-      - name: Gradle 构建
+      - name: 构建 with Gradle
         if: contains(github.event.head_commit.message, '[skip ci]') == false
         run: ./gradlew build --info
         continue-on-error: false
 
-      - name: 查找正确的 JAR
+      - name: 查找 JAR
         id: find-jar
         run: |
           output=$(ls build/libs/*.jar | grep -v '-dev\|-sources' | head -1)
           echo "jarname=$output" >> $GITHUB_OUTPUT
 
-      - name: 上传构建产物
+      - name: 上传构建结果
         if: success()
         uses: actions/upload-artifact@v3
         with:
